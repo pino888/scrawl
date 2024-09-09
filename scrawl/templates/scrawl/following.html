@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<h1>Following</h1>
+{{ profile }}
+<a href='/'>Home</a>
+<a href="{% url 'scrawl:profile' request.user.profile.id %} ">My Profile</a>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Following</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Followers</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="following-tab">
+        <ul>
+        {% for profile in following %}
+            <li><a href="{% url 'scrawl:profile' profile.id %}">{{ profile }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="followers-tab">
+        <ul>
+        {% for profile in followers %}
+            <li><a href="{% url 'scrawl:profile' profile.id %}">{{ profile }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="saved-scrawls-tab">3</div>
+</div>
+
+{% endblock page_content %}

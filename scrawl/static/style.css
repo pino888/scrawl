@@ -1,0 +1,26 @@
+.navbar {
+    margin: 0 0 0.7rem 0;
+}
+
+.feed {
+    padding: 0.7rem;
+    color: florawhite;
+}
+
+.scrawls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.scard  {
+  @extend .card;
+  margin: 0.3rem;
+  background: aliceblue;
+  overflow: hidden;
+}
+
+.scard-body  {
+  @extend .card-body;
+  max-height: 5rem;
+}

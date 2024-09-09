@@ -1,0 +1,4 @@
+venv
+venvScriptsactivate
+.env
+*.sqlite3

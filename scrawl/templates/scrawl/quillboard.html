@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+{% if user.is_authenticated %}
+
+<h1>Top Scrawls</h1>
+
+<div class="accordion" id="accordionQuills">
+    {% for scrawl in top_scrawls %}
+    <div class="card">
+        <div class="card-header" id="scrawlHeading{{ scrawl.id }}">
+            <h5 class="mb-0">
+                <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#scrawl{{ scrawl.id }}" aria-expanded="true" aria-controls="scrawl{{ scrawl.id }}">
+                {{ forloop.counter }}. {{ scrawl.body|truncatechars:30 }} &#10029 {{ scrawl.quills }}
+                </button>
+            </h5>
+        </div>
+
+        <div id="scrawl{{ scrawl.id }}" class="collapse" aria-labelledby="scrawlHeading{{ scrawl.id }}" data-parent="#accordionQuills">
+            <div class="card-body">
+                Author: <a href="{% url 'scrawl:profile' scrawl.user.id %}">{{ scrawl.user.username }}</a>
+                <br>
+                <br>
+                {{ scrawl.body }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% else %}
+<p>You are not logged in</p>
+<p><a href="{% url 'scrawl:password_reset' %}">Password Reset</a></p>
+<a href="{% url 'scrawl:login' %}">Log In</a>
+{% endif %}
+
+{% endblock page_content %}
