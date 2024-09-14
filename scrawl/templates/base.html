@@ -20,7 +20,7 @@
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
 </head>
-
+{% if user.is_authenticated %}
 <body class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/">Hello {{ user }}!</a>
@@ -54,6 +54,14 @@
   </div>
 </nav>
 <div class="feed">
+
+{% else %}
+<p>You are not logged in</p>
+<p><a href="{% url 'scrawl:password_reset' %}">Password Reset</a></p>
+    <p><a href="{% url 'scrawl:signup' %}">Sign Up</a></p>
+<a href="{% url 'scrawl:login' %}">Log In</a>
+{% endif %}
+
 {% block page_content %}
 <!-- Here goes the dynamic content -->
 {% endblock page_content %}

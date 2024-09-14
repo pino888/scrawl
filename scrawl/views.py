@@ -9,7 +9,8 @@ from .forms import ScrawlForm
 
 @login_required
 def home(request):
-    followed_scrawls = Scrawl.objects.filter(user__profile__in=request.user.profile.follows.all()).order_by("-created_at")
+    followed_scrawls = Scrawl.objects.filter(user__profile__in=request.user.profile.follows.all()).order_by(
+        "-created_at")
 
     if request.method == "POST":
         if request.POST.__contains__("quill"):
@@ -40,6 +41,10 @@ def home(request):
 def profile(request, pk):
     profile = Profile.objects.get(pk=pk)
     total_quills = Scrawl.objects.filter(user__profile=profile).aggregate(Sum("quills", default=0))
+    total_following = profile.follows.all().count()
+    total_followers = profile.followed_by.all().count()
+    following = User.objects.filter(profile__in=profile.follows.all()).order_by("username")
+    followers = User.objects.filter(profile__in=profile.followed_by.all()).order_by("username")
 
     if request.method == "POST":
         current_user_profile = request.user.profile
@@ -51,7 +56,9 @@ def profile(request, pk):
             current_user_profile.follows.remove(profile)
         current_user_profile.save()
 
-    return render(request, "scrawl/profile.html", {"profile": profile, "total_quills": total_quills})
+    return render(request, "scrawl/profile.html", {"profile": profile, "total_quills": total_quills,
+                                                   "total_followers": total_followers, "total_following": total_following, "following": following,
+                                                   "followers": followers})
 
 
 def following(request, pk):
