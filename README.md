@@ -14,6 +14,14 @@ This projects provides a functional, although not very styled, version of the ap
 - User profile, containing all of their Scrawls, saved Scrawls, lists of followers
 - Utilities like password change and logout
 
+### How to use
+
+- Fetch/Fork the repo
+- Install the requirements
+- Run the migrations
+- Make sure to create the .env file which should contain your SECRET_KEY, DEBUG, and EMAIL settings.
+I'm using the [python-decouple](https://pypi.org/project/python-decouple/) module to import these. 
+
 ### Demo
 You can explore the demo version in [here]() - As the project requires to be logged in, feel free to create your own 
 account or log in as *Guest* (user: guest, pass: 1bigmountain). I'd be delighted if you add some content
@@ -21,8 +29,8 @@ and/or interact with the demo - any feedback would be greatly appreciated too!
 
 ### Credits
 The initial build was based on this Real Python tutorial - [Build a Social Network With Django.](https://realpython.com/django-social-network-1/)
-Although, only the part 1 and I've opted for Bootstrap instead of Bulma.
+Although, only the part 1 and, I've opted for Bootstrap instead of Bulma.
 
 ### License
-MIT License. Feel free to use it as a skeleton for any of your projects, for personal or enterprise
-use, any credit to my git account would be great and please consider giving this project a star :)
+MIT License. Feel free to use it as a skeleton for any of your projects, either personal or commercial
+use. Any credit to my git account would be great and please consider giving this project a star :)
