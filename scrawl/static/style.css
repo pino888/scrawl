@@ -24,3 +24,9 @@
   @extend .card-body;
   max-height: 5rem;
 }
+
+.login {
+    min-height: 100vh;
+    text-align: center;
+    align-content: center;
+}

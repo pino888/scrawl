@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
-from django.db.models import Q
 
 from .models import User, Profile, Scrawl, Comment
 from .forms import ScrawlForm
@@ -59,15 +58,6 @@ def profile(request, pk):
     return render(request, "scrawl/profile.html", {"profile": profile, "total_quills": total_quills,
                                                    "total_followers": total_followers, "total_following": total_following, "following": following,
                                                    "followers": followers})
-
-
-def following(request, pk):
-    profile = Profile.objects.get(pk=pk)
-    following = User.objects.filter(profile__in=profile.follows.all()).order_by("username")
-    followers = User.objects.filter(profile__in=profile.followed_by.all()).order_by("username")
-
-    return render(request, "scrawl/following.html", {"profile": profile, "following": following,
-                                                     "followers": followers})
 
 
 def create_scrawl(request):

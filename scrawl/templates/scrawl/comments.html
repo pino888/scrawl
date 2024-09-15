@@ -1,23 +1,24 @@
 {% extends "base.html" %}
 
 {% block page_content %}
-<a href="/">Home</a>
 
 {% for comment in comments %}
     <p>{{ comment.user }}: {{ comment.body }} has {{ comment.quills }} quills</p>
     <form method="post">
         {% csrf_token %}
         {% if comment in user.quilled_comments.all %}
-        <button class="btn btn-warning" name="quill" value="{{ comment.id }}">q</button>
+        <button class="btn btn-primary" name="quill" value="{{ comment.id }}">&#10029<span class="badge badge-light">{{ comment.quills }}</span></button>
         {% else %}
-        <button class="btn btn-success" name="quill" value="{{ comment.id }}">Q</button>
+        <button class="btn btn-secondary" name="quill" value="{{ comment.id }}">&#10025<span class="badge badge-light">{{ comment.quills }}</span></button>
         {% endif %}
     </form>
+<br>
 {% endfor %}
 
 <form method="post">
     {% csrf_token %}
     <input class="form-control" name="body" placeholder="Comment as {{ user }}" required>
-    <button class="btn btn-success" name="comment" value="{{ scrawl.id }}">C</button>
+    <br>
+    <button class="btn btn-success" name="comment" value="{{ scrawl.id }}">&#10002</button>
 </form>
 {% endblock page_content %}

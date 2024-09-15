@@ -29,7 +29,7 @@ class Scrawl(models.Model):
         'Excerpt': 'Excerpt',
         'Drabble': 'Drabble',
     }
-    user = models.ForeignKey(User, related_name='scrawls', on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User, related_name='scrawls', on_delete=models.CASCADE)
     type = models.CharField(max_length=10, choices=SCRAWL_TYPES)
     body = models.CharField(max_length=3000)
     quilled_by = models.ManyToManyField(User, related_name="quilled_scrawls", blank=True)
@@ -46,8 +46,8 @@ class Scrawl(models.Model):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(User, related_name='comments', on_delete=models.DO_NOTHING)
-    scrawl = models.ForeignKey(Scrawl, related_name='comments', on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE)
+    scrawl = models.ForeignKey(Scrawl, related_name='comments', on_delete=models.CASCADE)
     body = models.CharField(max_length=500)
     quilled_by = models.ManyToManyField(User, related_name="quilled_comments", blank=True)
     quills = models.IntegerField(default=0)
