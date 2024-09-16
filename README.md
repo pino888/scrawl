@@ -23,12 +23,12 @@ This projects provides a functional, although not very styled, version of the ap
 I'm using the [python-decouple](https://pypi.org/project/python-decouple/) module to import these. 
 
 ### Demo
-You can explore the demo version in [here]() - As the project requires to be logged in, feel free to create your own 
-account or log in as *Guest* (user: guest, pass: 1bigmountain). I'd be delighted if you add some content
+You can explore the demo version in [here](https://pdani.pythonanywhere.com/) - As the project requires to be logged in, feel free to create your own 
+account or login as a *Guest* (user: guest, password: 1bigmountain). I'd be delighted if you add some content
 and/or interact with the demo - any feedback would be greatly appreciated too!
 
 ### Credits
-The initial build was based on this Real Python tutorial - [Build a Social Network With Django.](https://realpython.com/django-social-network-1/)
+The initial build was based on this *Real Python* tutorial - [Build a Social Network With Django.](https://realpython.com/django-social-network-1/)
 Although, only the part 1 and, I've opted for Bootstrap instead of Bulma.
 
 ### License
